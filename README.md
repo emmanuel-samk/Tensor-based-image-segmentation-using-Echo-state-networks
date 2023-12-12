@@ -3,4 +3,4 @@ Structural Tensor. Some of the study's results appeared in the proceedings of [M
 
 ## Architecture of the Standard ESN Model
 
-! [standard ESN model](/docs/images/ESN.png)
+![standard ESN model](../docs/images/ESN.png)
