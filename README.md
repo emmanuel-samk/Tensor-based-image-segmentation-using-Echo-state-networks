@@ -2,7 +2,7 @@
 Image segmentation aims to split an image into regions corresponding to specific objects or areas in the image. Image segmentation can be considered as a pixel classification task.
 In this approach, the low-level features extracted from an image are fed to a supervised learning model, and the model is  trained to assign labels to pixels such that the same 
 label is given to pixels with similar features. Thus, the accuracy of such an approach depends on the quality of the features and the type of model used.
-Structural Tensor was proposed as a feature extraction technique to take advantage of the information on texture, which is hidden between neighboring pixels. 
+Structural Tensor was proposed as a feature extraction technique to take advantage of the texture information hidden between neighboring pixels. 
 
 This Python package was used to investigate the performance of the standard Echo State Network(ESN) model for pixel-based image segmentation. The model
 was trained with pixel features extracted with Structural Tensors (see Section 2 for a detailed description of the data).  
@@ -13,4 +13,8 @@ Some of the results of this study appeared in the proceedings of [MESAS 2018](ht
 ![standard ESN model](/docs/images/ESN.png)
 
 ## Data Description
-This data was used to evaluate a Tensor-based Image Segmentation Algorithm (TBISA) proposed in [].
+The datasets employed in this study were based on seven Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website. They are identified as '35058',
+'41033', '66053', '69040', '134052', '161062', and '326038'. They were used in a similar study to evaluate a tensor-based image segmentation algorithm using other classifiers []. 
+For each image, the dataset comprises 15 pixel-level values called *Extended Structural Tensor* (EST) computed for each point (pixel) in the image. These values convey 
+information on image texture and curvature in the neighborhood of each pixel and their intensity or color values. Each pixel has a corresponding class label indicating whether the pixel
+belongs to an object or a background. A detailed description of the EST feature extraction can be found in [].
