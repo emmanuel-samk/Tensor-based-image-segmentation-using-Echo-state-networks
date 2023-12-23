@@ -20,7 +20,7 @@ color image segmentation algorithm. Each dataset comprises 15 features and a cla
 For each pixel, the values of the feature vector called *Extended Structural Tensor* (EST) convey information on image texture and curvature in the pixel's neighborhood and its intensity or color values.
 A detailed description of extracting features from an image using ST can be found in [].
 
-### Training $\&$ Testing set
+### Training and Testing set
 The training set consists of uniformly distributed pixels selected from the image datasets (8068, 41033, 61060, 69040). 
 To test the accuracy of the model, entire images were used. All the pixels from the test image are "classified and compared 
 with their original labels."
