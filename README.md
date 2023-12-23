@@ -13,12 +13,12 @@ Some of the results of this study appeared in the proceedings of [MESAS 2018](ht
 ![standard ESN model](/docs/images/ESN.png)
 
 ## Data Description
-The datasets employed in this study were based on seven Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website. 
-The pictures are in JPG format, and each is of size (481 \by 321), i.e., 154401 pixels. They are identified as '35058',
-'41033', '66053', '69040', '134052', '161062', and '326038'. They were used in a similar study to evaluate a tensor-based image segmentation algorithm using other classifiers []. 
+The images employed in this study were Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website.
+The pictures are in JPG format, and each is of size (481 \by 321), i.e., 154401 pixels. They are identified as '35058', '41033', '66053', '69040', '134052', '161062', and '326038'. 
+The datasets extracted from these images were used by Jackowski et al. for a similar study that proposes a tensor-based image segmentation algorithm using other classifiers []
 The dataset for each image comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. For each pixel, the values of the 
 feature vector called *Extended Structural Tensor* (EST) conveys information on image texture and curvature in the neighborhood of the pixel and its intensity or color values.
 A detailed description of extracting features from an image using EST can be found in [].
 
- The training set consists of uniformly distributed pixels selected from the pictures 
+The training set consists of uniformly distributed pixels selected from the pictures 
 8068, 41033, 61060, 69040. Accuracy is estimated over entire images i.e., all of the pixels were classified and compared with their original labels.
