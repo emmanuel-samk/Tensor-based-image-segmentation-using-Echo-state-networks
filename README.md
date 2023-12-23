@@ -18,3 +18,6 @@ The datasets employed in this study were based on seven Berkley Segmentation Ben
 The dataset for each image comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. For each pixel, the values of the 
 feature vector called *Extended Structural Tensor* (EST) conveys information on image texture and curvature in the neighborhood of the pixel and its intensity or color values.
 A detailed description of extracting features from an image using EST can be found in [].
+
+The pictures are stored in JPG format, and each is of size (481 \by 321), i.e., 154401 pixels. The training set consists of uniformly distributed pixels selected from the pictures 
+8068, 41033, 61060, 69040. Accuracy is estimated over entire images i.e., all of the pixels were classified and compared with their original labels.
