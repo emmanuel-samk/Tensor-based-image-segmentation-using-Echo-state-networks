@@ -13,14 +13,16 @@ Some of the results of this study appeared in the proceedings of [MESAS 2018](ht
 ![standard ESN model](/docs/images/ESN.png)
 
 ## Data Description
-The data employed in this study were selected from the Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website.
-The pictures are in JPG format, and each is of size (481 $\times$ 321), i.e., 154401 pixels. They are identified as '35058', '41033', '66053', '69040', '134052', '161062', and '326038'. 
+The image datasets employed in this study were selected from the Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website.
+The images are in JPG format, and each is of size (481 $\times$ 321), i.e., 154401 pixels. A sample of these images identified as '35058', '41033', '66053', '69040', '134052', '161062', and '326038',
+and their corresponding ground-truth segmentations are shown below.
+
 The datasets based on these images were extracted by Jackowski et al.[] using *structural tensor* and used for a similar study that proposes a pixel classification-based
 color image segmentation algorithm. Each dataset comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. 
 For each pixel, the values of the feature vector called *Extended Structural Tensor* (EST) convey information on image texture and curvature in the pixel's neighborhood and its intensity or color values.
 A detailed description of extracting features from an image using ST can be found in [].
 
 ### Training and Testing set
-The training set consists of uniformly distributed pixels selected from the image datasets (8068, 41033, 61060, 69040). 
-To test the accuracy of the model, entire images were used. All the pixels from the test image are "classified and compared 
-with their original labels." 
+The training set consists of uniformly distributed pixels selected from the image datasets (8068, 41033, 61060, 69040), and the test set consists of all the pixels in each image.
+The model's accuracy was tested for each image: all the pixels from the test image are "classified and compared with their original labels." 
+The feature vector values are normalized between 0 and 1
