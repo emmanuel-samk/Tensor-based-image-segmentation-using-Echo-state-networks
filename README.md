@@ -23,4 +23,4 @@ A detailed description of extracting features from an image using ST can be foun
 ### Training and Testing set
 The training set consists of uniformly distributed pixels selected from the image datasets (8068, 41033, 61060, 69040). 
 To test the accuracy of the model, entire images were used. All the pixels from the test image are "classified and compared 
-with their original labels."
+with their original labels." 
