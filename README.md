@@ -13,7 +13,7 @@ Some of the results of this study appeared in the proceedings of [MESAS 2018](ht
 ![standard ESN model](/docs/images/ESN.png)
 
 ## Data Description
-The data employed in this study were Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website.
+The data employed in this study were selected from the Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website.
 The pictures are in JPG format, and each is of size (481 $\times$ 321), i.e., 154401 pixels. They are identified as '35058', '41033', '66053', '69040', '134052', '161062', and '326038'. 
 The datasets based on these images were extracted by Jackowski et al.[] using *structural tensor* and used for a similar study that proposes a pixel classification-based
 color image segmentation algorithm. Each dataset comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. 
