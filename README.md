@@ -15,6 +15,6 @@ Some of the results of this study appeared in the proceedings of [MESAS 2018](ht
 ## Data Description
 The datasets employed in this study were based on seven Berkley Segmentation Benchmark images published on *Berkley Computer Vision Group*'s website. They are identified as '35058',
 '41033', '66053', '69040', '134052', '161062', and '326038'. They were used in a similar study to evaluate a tensor-based image segmentation algorithm using other classifiers []. 
-For each image, the dataset comprises 15 pixel-level values called *Extended Structural Tensor* (EST) computed for each point (pixel) in the image. These values convey 
-information on image texture and curvature in the neighborhood of each pixel and their intensity or color values. Each pixel has a corresponding class label indicating whether the pixel
-belongs to an object or a background. A detailed description of the EST feature extraction can be found in [].
+The dataset for each image comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. For each pixel, the values of the 
+feature vector called *Extended Structural Tensor* (EST) conveys information on image texture and curvature in the neighborhood of the pixel and its intensity or color values.
+A detailed description of extracting features from an image using EST can be found in [].
