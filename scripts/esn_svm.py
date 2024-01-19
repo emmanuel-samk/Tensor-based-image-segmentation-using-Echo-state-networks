@@ -37,16 +37,15 @@ class ESNSVM(object):
         
         # memory for model parameters
         self.trans_len = trans_len
-        self.__out_size = out_size
         self.in_size = in_size
         self.res_size = res_size
 
-        # memory to store trained output weights
-        self.Wout = None
-        # memory to store collected reservoir states
-        self.X = None
+        # # memory to store trained output weights
+        # self.Wout = None
+        # # memory to store collected reservoir states
+        # self.X = None
         # memory to accumulate reservoir output of X_test
-        self.X_test = None
+        self.res_out = None
         # set readout
         if svm_model is None:
             self.readout = svm.SVC(kernel='rbf', C=1.0, gamma=1000) 
@@ -75,17 +74,18 @@ class ESNSVM(object):
                 X[:,t - self.trans_len] = np.vstack((1,u,state))[:,0].T 
         # store esn feature representation
         self.X = X
-        # X_T = self.X.T
+        X_T = self.X.T
+        # print(f'X_T: {X_T.shape}')
         # train the svm model
-        self.readout.fit(self.X, Y_train)
+        self.readout.fit(X_T, Y_train)
+        # print(f'Y_train: {Y_train.shape}')
         print('Training completed')
 
     def test(self, X_test, Y_test):
         # get length of test data
         test_len = len(X_test)
         # allocate memory to collect predicted outputs
-        self.Y_pred = np.zeros((self.__out_size,test_len))
-
+        self.res_out = np.zeros((1 + self.in_size + self.res_size, test_len))
         # print(f'Previous state: \n {self.reservoir.prev_res_state}')
         for t in range(test_len):
             # retrieve the first test input
@@ -93,13 +93,15 @@ class ESNSVM(object):
             # update the reservoir with u. Previous state = last state after training
             state = self.reservoir.get_res_state(u)
             # predict the output for u
-            y = np.dot(self.Wout, np.vstack((1,u,state)) )
-            self.x_test[:t] = y
+            y = np.vstack((1,u,state))[:,0].T
+            self.res_out[:,t] = y
 
+        res_out_T = self.res_out.T
+        # print(f'res_out_T {res_out_T.shape}')
         # transpose Yhat and Y_test and change them to 1d arrays
-        Yhat = self.readout.predict(self.X_test)
-        Yhat = Yhat.T[:,0]
+        Yhat = self.readout.predict(res_out_T)
         Y_test = np.squeeze(np.asarray(Y_test.T))
-        print('Test completed')
+        print(Y_test.shape)
+        # print('Test completed')
         return(accuracy_score(Y_test,Yhat))
   

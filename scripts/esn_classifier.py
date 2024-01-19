@@ -98,7 +98,9 @@ class ESNClassifier(object):
                 self.Y_pred[:,t] = 0
 
         # transpose Yhat and Y_test and change them to 1d arrays
+        print(f'Y_pred: {self.Y_pred}')
         Yhat = self.Y_pred.T[:,0]
+        print(f'Yhat: {Yhat.shape}')
         Y_test = np.squeeze(np.asarray(Y_test.T))
         print('Test completed')
         return(accuracy_score(Y_test,Yhat))
