@@ -36,7 +36,7 @@ esn_config['init_scale'] = 0.5                  # weight matrix scaling value
 
 # =========== Readout parameters =================
 # create an svm classification model
-esn_config['svm_model'] = svm.SVC(kernel='rbf', C=1.0, gamma=1000)                
+esn_config['readout'] = svm.SVC(kernel='rbf', C=1.0, gamma=1000)                
 
 print (f'ESN Classifier Configuration \n {esn_config}')
 
@@ -72,7 +72,7 @@ model = ESNSVM(in_size = esn_config['in_size'],
             spec_rad= esn_config['spec_rad'],
             init_scale=esn_config['init_scale'],
             lr = esn_config['lr'],
-            svm_model = esn_config['svm_model']
+            readout = esn_config['readout']
             )
 
 # Drive the ESN with X_train and train the svm readout

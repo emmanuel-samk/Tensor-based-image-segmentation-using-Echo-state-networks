@@ -73,6 +73,7 @@ class ESNClassifier(object):
         self.X = X
         X_T = self.X.T
         # compute Wout by ridge regression
+        # self.readout.fit(self.X, Y_train)
         self.Wout = np.dot( np.dot(Y_train.T,X_T), np.linalg.inv( np.dot(self.X,X_T) + \
         self.reg * np.eye(1+ self.in_size + self.res_size) ) )
         print('Training completed')
@@ -91,6 +92,8 @@ class ESNClassifier(object):
             # update the reservoir with u. Previous state = last state after training
             state = self.reservoir.get_res_state(u)
             # predict the output for u
+            # res_out =  np.vstack((1,u,state))
+            # self.Y_red[:t] = readout.predict()
             y = np.dot(self.Wout, np.vstack((1,u,state)) )
             if (y > 0.5):
                 self.Y_pred[:,t] = 1
@@ -104,7 +107,7 @@ class ESNClassifier(object):
         Y_test = np.squeeze(np.asarray(Y_test.T))
         print('Test completed')
         return(accuracy_score(Y_test,Yhat))
-
+   
     def set_regularization(self, Y_train, reg):
         # check if model has been trained
         if self.X is not None:

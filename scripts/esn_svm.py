@@ -18,7 +18,7 @@ class ESNSVM(object):
                  init_scale: float = None,
                  lr: float = None,
                  reservoir: object = None,
-                 svm_model: object = None,
+                 readout: object = None,
                  random_gen: object = None,
                  ):
         # set random number generator
@@ -47,10 +47,10 @@ class ESNSVM(object):
         # memory to accumulate reservoir output of X_test
         self.res_out = None
         # set readout
-        if svm_model is None:
+        if readout is None:
             self.readout = svm.SVC(kernel='rbf', C=1.0, gamma=1000) 
         else:
-            self.readout = svm_model
+            self.readout = readout
 
     def train(self, X_train, Y_train):
         """
@@ -92,9 +92,8 @@ class ESNSVM(object):
             u = np.matrix(X_test[t]).T
             # update the reservoir with u. Previous state = last state after training
             state = self.reservoir.get_res_state(u)
-            # predict the output for u
-            y = np.vstack((1,u,state))[:,0].T
-            self.res_out[:,t] = y
+            # reservoir output for u
+            self.res_out[:,t] = np.vstack((1,u,state))[:,0].T
 
         res_out_T = self.res_out.T
         # print(f'res_out_T {res_out_T.shape}')
