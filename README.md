@@ -1,4 +1,6 @@
-# Analysis of Tensor-Based Image Segmentation using Echo State Network (ESN)
+# Tensor-Based Image Segmentation with Echo State Network (ESN)
+## A python package used to explore the potential of the standard ESN model with linear regression readout for achieving good image segmentation results when applied on *Extended Structral Tensor* (EST)-based feature set.
+
 This Python package was used to explore the potential of the standard ESN model with linear regression readout for achieving good image segmentation results when applied on *Extended Structral Tensor* (EST)-based feature set. The *Structural Tensor* (ST) of a image is a feature matrix which elements consist of the averaged values of the gradient components in a certain neighbourhood defined around every point in an image. EST is ST extended to account for color/intensity components. It was proposed by Jackowski et al.[] and used to train some classical classifiers, such as Support Vecdtor Machine (SVM) for image segmentation. In this paper, we test the effect of the reservoir activations of EST on the accuracy of image segmentation. We evaluate the influence of spectral radius and reservoir size on the result and compare the best accuracy with the accuracy attained with Support Vector Machine. These results appeared in the proceedings of [MESAS 2018](https://link.springer.com/chapter/10.1007/978-3-030-14984-0_36).
 
  
@@ -8,7 +10,8 @@ The goal of any image segmentation technique is to achieve a high segmentation a
 ## Motivation
 The main motivation for this tensor-based segmentation using ESN is to take advantage of the linear separability of ESN in addition to discriminative features defined by EST to achieve a high segmentation accuracy.
 
-## Architecture of the Standard ESN Model
+## Architecture of the ESN Classifier
+
 ![standard ESN model](/docs/images/ESN.png)
 
 ## How it works

@@ -8,7 +8,7 @@ class ESNSVM(object):
     Parameters:
     ----------
     
-    
+
     """
     def __init__(self, in_size: int, 
                  res_size: int,

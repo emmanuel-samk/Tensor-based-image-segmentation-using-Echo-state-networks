@@ -3,11 +3,28 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 
 class ESNClassifier(object):
-    """Create an ESN model with linear output
+    """Create an ESN model with a ridge regression classifier
     Parameters:
     ----------
-    
-    
+    in_size: int
+        number of input units, i.e., number of features + bias
+    res_size: int
+        number of reservoir units or neorons 
+    trans_len: int
+        trainsient length. The transient is [0, trans_len ). 
+    spec_rad: float
+        spectral radius: max(absolute values of the eigen values of the
+        reservoir weight matrx)
+    init_scale: float
+        input scaling of the input and reservoir weight matrices
+    lr: float
+        leaking rate.
+    resevoir: object, optional
+        an instance of the Reservoir class
+    random_gen: object, optional
+        random number generator
+    re: float, default = 1e-2
+        regularization
     """
     def __init__(self, in_size: int, 
                  res_size: int,
@@ -20,10 +37,10 @@ class ESNClassifier(object):
                  random_gen: object = None,
                  reg: float = 1e-2
                  ):
-        # set random number generator
+        # initialize random number generator
         self.rng = np.random.default_rng(42) \
             if random_gen is None else random_gen
-        
+        # initialize reservoir
         if reservoir is None:
             self.reservoir = Reservoir(in_size,
                                  res_size,
@@ -34,29 +51,28 @@ class ESNClassifier(object):
         else:
             self.reservoir = reservoir
         
-        # memory for model parameters
+        # initialize model parameters
         self.trans_len = trans_len
         self.reg = reg
         self.__out_size = out_size
         self.in_size = in_size
         self.res_size = res_size
 
-        # memory to store trained output weights
+        # allocate memory to store trained output weights
         self.Wout = None
-        # memory to store collected reservoir states
+        # allocate memory to store reservoir output, i.e.,
+        # bias + input + reservoir state
         self.X = None
-        # memory to accumulate predicted output
+        # allocate memory to accumulate predicted outputs
         self.Y_pred = None
-        # memory to store MSE of the model
-        self.mse = None
-
+  
     def train(self, X_train, Y_train):
         """
-        collect reservoir states and use it to 
+        collect reservoir outputs and use them to 
         train the output weights
         
         """
-        # get the length of the input data
+        # get the size of the training set
         train_len  =  len(X_train)
         #Allocate memory to collect reservoir states after initial transient phase
         X = np.zeros((1 + self.in_size + self.res_size, train_len - self.trans_len))
@@ -101,9 +117,7 @@ class ESNClassifier(object):
                 self.Y_pred[:,t] = 0
 
         # transpose Yhat and Y_test and change them to 1d arrays
-        print(f'Y_pred: {self.Y_pred}')
         Yhat = self.Y_pred.T[:,0]
-        print(f'Yhat: {Yhat.shape}')
         Y_test = np.squeeze(np.asarray(Y_test.T))
         print('Test completed')
         return(accuracy_score(Y_test,Yhat))

@@ -4,8 +4,9 @@ import numpy as np
 from sklearn.preprocessing import MinMaxScaler
 
 def combine_datasets(locs):
-    """ Combines image datasets into a single dataset mat
-    parameters:
+    """ Combine image datasets at located at locs into a single dataset (mat)
+    Parameters:
+    ----------
     locs: list of paths
         the locations of the files to be combined
     """
