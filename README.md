@@ -1,37 +1,6 @@
-# Introduction
-Image segmentation aims to split an image into regions corresponding to specific objects or areas in the image. Image segmentation can be considered as a pixel classification task.
-In this approach, the low-level features extracted from an image are fed to a supervised learning model, and the model is  trained to assign labels to pixels such that the same 
-label is given to pixels with similar features. Thus, the accuracy of such an approach depends on the quality of the features and the type of model used.
-Structural Tensor was proposed as a feature extraction technique to take advantage of the texture information hidden between neighboring pixels. 
+# Tensor-Based Image Segmentation using Echo State Network (ESN)
 
-This Python package was used to investigate the performance of the standard Echo State Network(ESN) model for pixel-based image segmentation. The model
-was trained with pixel features extracted with Structural Tensors (see Section 2 for a detailed description of the data).  
-Some of the results of this study appeared in the proceedings of [MESAS 2018](https://link.springer.com/chapter/10.1007/978-3-030-14984-0_36).
-
-The *Echo state network* (ESN) model provides an alternative approach to gradient-descent-based approaches for training Recurrent Neural Networks (RNNs). 
-ESN consists of an RNN comprising fixed random weights called the *reservoir* and a supervised learning model called the *readout*. 
-It demonstrates that RNNs can perform significantly well even when only a subset of the network weights are trained. When driven by
-an input signal, the reservoir acts as a high-dimensional feature map that improves the linear separability of the input data. Furthermore, 
-it preserves the nonlinear transformation of the input history in its internal states. The readout is trained as a l
-
-ESN is known for 
-
-
-Although it was proposed for temporal tasks, its performance for many non-temporal tasks has been studied. In [], the potential of the ESN reservoir 
-to refine pixel features for color *image segmentation* and the influence of the above-mentioned parameters on the results has been investigated.
-Since features based on RGB values alone do have poor discriminative power with regards to classification, Jackowski et al. []  proposed  *Structural tensor* 
-as a feature extraction technique to exploit the texture and local curvature information hidden between neighboring pixels. Extended with intensity or color values, 
-the resulting *extended structural tensor* also conveys information on image color. The authors studied the usefulness and effectiveness of different
-classification algorithms when trained with features based on structural tensors and showed that this method can perform better than the classical method 
-based on color and intensity attributes only.
-
-In this study, we investigate an image segmentation that exploits the discriminative power of EST combined with the internal dynamics to refine pixel features.
-
-Image segmentation aims to split an image into regions corresponding to specific objects or areas in the image. Image segmentation can be considered as a pixel classification task.
-In this approach, the low-level features extracted from an image are fed to a supervised learning model, and the model is  trained to assign labels to pixels such that the same 
-label is given to pixels with similar features. However, the accuracy of such an approach is impacted by several factors, including the quality of the features and the type of model used.
-# Tensor-Based Image Segmentation with Echo State Network (ESN)
-## A python package used to explore the potential of the standard ESN model with linear regression readout for achieving good image segmentation results when applied on *Extended Structral Tensor* (EST)-based feature set.
+## A package that allows for the implementation of a color image classifier using an ESN classifier trained with *Extended Structural Tensor* (EST) feature set.
 
 This Python package was used to explore the potential of the standard ESN model with linear regression readout for achieving good image segmentation results when applied on *Extended Structral Tensor* (EST)-based feature set. The *Structural Tensor* (ST) of a image is a feature matrix which elements consist of the averaged values of the gradient components in a certain neighbourhood defined around every point in an image. EST is ST extended to account for color/intensity components. It was proposed by Jackowski et al.[] and used to train some classical classifiers, such as Support Vecdtor Machine (SVM) for image segmentation. In this paper, we test the effect of the reservoir activations of EST on the accuracy of image segmentation. We evaluate the influence of spectral radius and reservoir size on the result and compare the best accuracy with the accuracy attained with Support Vector Machine. These results appeared in the proceedings of [MESAS 2018](https://link.springer.com/chapter/10.1007/978-3-030-14984-0_36).
 
