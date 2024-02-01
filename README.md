@@ -1,4 +1,4 @@
-# Tensor-Based Image Segmentation using [Echo State Network (ESN)] (http://www.scholarpedia.org/article/Echo_state_network)
+# Tensor-Based Image Segmentation using [Echo State Network (ESN)](http://www.scholarpedia.org/article/Echo_state_network)
 
 ## A package that allows for the implementation of color image segmentation using an ESN classifier trained with _Extended Structural Tensor_ (EST)-based feature set.
 
