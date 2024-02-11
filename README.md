@@ -1,6 +1,6 @@
 # Tensor-Based Image Segmentation using Echo State Network (ESN)
 
-## A pixel classification model for color image segmentation algorithm based on ESN and _Extended Structural Tensor_ (EST)-based pixel feature set
+## A pixel classification model for color image segmentation based on ESN and _Extended Structural Tensor_ (EST)-based pixel feature set
 
 This package allows to create a [standard ESN](http://www.scholarpedia.org/article/Echo_state_network) model to classify the pixels in a color image (pixel-based image segmentation)
 into two ground-truth regions, namely, object and background. The classification uses pixel features extracted by EST (see [] for details of how to compute the EST of an image). The primary motivation for this model is to take advantage of the discriminative features conveyed by EST-based features, such as texture hidden in the neighborhood of pixels, and the improved linear separability of inputs offered by the ESN reservoir to achieve high image segmentation accuracy.
