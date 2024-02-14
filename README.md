@@ -11,7 +11,9 @@ To identify the (_spectral radius _ , _reservoir size_) pair that yields the bes
 
 We use Berkley Segmentation Benchmark images to train and test the proposed model's performance. They are identified as '35058', '41033', '66053', '69040', '134052', '161062', and '326038' (see Table 1). Each is of size (481 $\times$ 321), i.e., 154401 pixels, and comes with ground-truth segmentations.
 
-The datasets stored in ![data/raw] (/data/raw) are the EST the benchmark images extracted by the authors in [] and used to propose a similar pixel classification-based color image segmentation algorithm. Each dataset comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. For each pixel, the feature vector conveys information on image texture and curvature in the pixel's neighborhood, its intensity or color values, and mix product of these.
+The datasets stored in [data/raw](/data/raw) are the EST of the images extracted by the authors in [] and used to propose a similar pixel classification-based color image segmentation algorithm. Each dataset comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. For each pixel, the feature vector conveys information on image texture and curvature in the pixel's neighborhood, its intensity or color values, and mixed product of these.
+
+### Normalization
 
 ### Training and Testing set
 
@@ -26,8 +28,9 @@ to lie between 0 and 1 using MinMax as follows.
 
 ## How it works
 
+Given a pixel $S(t)$ at time $t$ with EST-based features $S_{1}(t),...S_{p}(t)$
 The EST-based pixel features $D$ are fed into the ESN. The reservoir $W$, acting as a high dimensional feature map, maps the inputs into a feature space $x$. The set $X$ of reservoir representations of the pixel features is then used as a new feature set to train the readout of the ESN - linear regression classifier.
 
-![standard ESN model](/docs/images/ESN.png)
+![standard ESN model](/docs/est_esn_architecture.pdf)
 
 ## References
