@@ -31,6 +31,6 @@ to lie between 0 and 1 using MinMax as follows.
 Given a pixel $S(t)$ at time $t$ with EST-based features $S_{1}(t),...S_{p}(t)$
 The EST-based pixel features $D$ are fed into the ESN. The reservoir $W$, acting as a high dimensional feature map, maps the inputs into a feature space $x$. The set $X$ of reservoir representations of the pixel features is then used as a new feature set to train the readout of the ESN - linear regression classifier.
 
-![standard ESN model](/docs/est_esn_architecture.pdf)
+![standard ESN model](/docs/est_esn_diagram.png)
 
 ## References
