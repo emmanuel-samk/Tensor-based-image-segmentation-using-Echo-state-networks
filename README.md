@@ -11,6 +11,9 @@ To identify the (_spectral radius _ , _reservoir size_) pair that yields the bes
 
 We use Berkley Segmentation Benchmark images to train and test the proposed model's performance. They are identified as '35058', '41033', '66053', '69040', '134052', '161062', and '326038' (see Table 1). Each is of size (481 $\times$ 321), i.e., 154401 pixels, and comes with ground-truth segmentations.
 
+![image data](/docs/data.png)
+Table 1
+
 The datasets stored in [data/raw](/data/raw) are the EST of the images extracted by the authors in [] and used to propose a similar pixel classification-based color image segmentation algorithm. Each dataset comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. For each pixel, the feature vector conveys information on image texture and curvature in the pixel's neighborhood, its intensity or color values, and mixed product of these.
 
 ### Normalization
