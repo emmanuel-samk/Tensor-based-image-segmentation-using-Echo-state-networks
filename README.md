@@ -1,17 +1,18 @@
 # Tensor-based image segmentation using Echo State Network (ESN)
 
-## A pixel classification model for color image segmentation based on ESN and _Extended Structural Tensor_ (EST)-based pixel feature set
+### A code for analyzing a pixel classification-based segmentation using Echo State Networks (ESN) and Extended Structural Tensor (EST) pixel feature set
 
+This is a package based on scikit-learn modules. It is used to study a pixel-based image segmentation
 This package allows to create a [standard ESN](http://www.scholarpedia.org/article/Echo_state_network) model to classify the pixels in a color image (pixel-based image segmentation)
 into two ground-truth regions, namely, object and background. The classification uses pixel features extracted by EST (see [[1]](https://link.springer.com/article/10.1007/s10044-015-0502-2) for details of how to compute the EST of an image). The primary motivation for this EST + ESN model is to achieve high image segmentation accuracy by taking advantage of the discriminative features conveyed by EST-based features, such as texture hidden in the neighborhood of pixels, and the improved linear separability of inputs offered by the ESN reservoir.
 
-To identify the (_spectral radius _ , _reservoir size_) pair that yields the best ESN classifier, it accepts a range of each of these parameters as input. Then, it performs a grid search of all possible (spectral radius , reservoir size) pairs and outputs the model with the best accuracy. The best accuracy can then be compared with the accuracy attained with other models such as Support Vector Machine. The results of the study for which this package was built appeared in the proceedings of [MESAS 2018](https://link.springer.com/chapter/10.1007/978-3-030-14984-0_36).
+To identify the ( _spectral radius_ , _reservoir size_) pair that yields the best ESN classifier, it accepts a range of each of these parameters as input. Then, it performs a grid search of all possible (spectral radius , reservoir size) pairs and outputs the model with the best accuracy. The best accuracy can then be compared with the accuracy attained with other models such as Support Vector Machine. The results of a study for which this package was built appeared in the proceedings of [MESAS 2018](https://link.springer.com/chapter/10.1007/978-3-030-14984-0_36).
 
 ## Data Description
 
 We use Berkley Segmentation Benchmark images to train and test the proposed model's performance. They are identified as shown in Table 1. Each image is of size (481 $\times$ 321), i.e., 154401 pixels, and comes with ground-truth segmentations.
 
-![image data](/docs/data.png)
+![image data](/docs/data_images.png)
 Table 1
 
 The datasets stored in [data/raw](/data/raw) are the EST of the images extracted by the authors in [[1]](https://link.springer.com/article/10.1007/s10044-015-0502-2) and used to propose a similar pixel classification-based color image segmentation algorithm. Each dataset comprises 15 features and a class label indicating whether the pixel belongs to an object or a background. For each pixel, the feature vector conveys information on image texture and curvature in the pixel's neighborhood, its intensity or color values, and mixed product of these.
