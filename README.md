@@ -1,10 +1,16 @@
 # Tensor-based image segmentation using Echo State Network (ESN)
 
-### A code for analyzing a pixel classification-based segmentation using Echo State Networks (ESN) and Extended Structural Tensor (EST) pixel feature set
+### A code for exploring the accuracy of pixel classification based on a standard ESN model and Extended Structural Tensor (EST) pixel feature set.
 
-This package is based on scikit-learn modules. It is used to study the potential of the [standard ESN](http://www.scholarpedia.org/article/Echo_state_network) model with linear regression readout for achieving good image segmentation results when trained with EST feature set. See [[1]](https://link.springer.com/article/10.1007/s10044-015-0502-2) for details of how to compute the EST of an image. The primary motivation for training an ESN model with EST-based feature set of color images is to achieve high image segmentation accuracy by taking advantage of the discriminative features conveyed by EST-based features, such as texture hidden in the neighborhood of pixels, and the improved linear separability of inputs offered by the ESN reservoir.
+This package is based on scikit-learn modules. It is used to study the potential of the [standard ESN](http://www.scholarpedia.org/article/Echo_state_network) model for pixel classification when trained with EST feature set. See [[1]](https://link.springer.com/article/10.1007/s10044-015-0502-2) for details of how to compute the EST features of an image. The primary motivation for training an ESN model with EST-based feature set of color images is to achieve high image segmentation accuracy by taking advantage of the discriminative features conveyed by EST-based features, such as texture hidden in the neighborhood of pixels, and the improved linear separability of inputs offered by the ESN reservoir.
 
-To evaluate the influence of spectral radius and reservoir size on the accuracy of image segmentation, it accepts a range of each of these parameters as input. It performs a grid search of all possible (spectral radius , reservoir size) pairs and outputs the model with the best accuracy, which can then be compared with the accuracy attained with other models such as Support Vector Machine. The objective is to attain a model to classify the pixels in a color image (pixel-based image segmentation) into two ground-truth regions, namely, object and background. The results of the study for which this package was built appeared in the proceedings of [MESAS 2018](https://link.springer.com/chapter/10.1007/978-3-030-14984-0_36).
+Becuase the performance of ESN is influenced by the reservoir size and spectral radius of the reservoir weight matrix, this package makes it possible to find the pair of these values that yields the best model accuracy. To this end, it accepts a range of each of these global parameters as input and performs a grid search of (spectral radius , reservoir size) pairs and outputs the model with the best accuracy.
+
+It allows the use of one of either two readout structures: ridge regressino or a support vector machine (svm) classifier.
+
+The objective is to attain a model to classify the pixels in a color image (pixel-based image segmentation) into two ground-truth regions, namely, object and background.
+
+The results of the study for which this package was built appeared in the proceedings of [MESAS 2018](https://link.springer.com/chapter/10.1007/978-3-030-14984-0_36).
 
 ## Data Description
 
